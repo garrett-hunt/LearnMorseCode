@@ -5,3 +5,49 @@
   text-align: center;
 }
 
+.translator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.morse {
+  padding: 3rem;
+}
+
+.english {
+  padding: 3rem;
+}
+
+.morseInput {
+  font-size: 1.2rem;
+  height: 10rem;
+  width: 20rem;
+}
+
+.englishInput {
+  font-size: 1.2rem;
+  height: 10rem;
+  width: 20rem;
+}
+
+#arrowIcon {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s;
+  background-color: rgb(67, 67, 67);
+  padding: 1rem;
+  border: 0px;
+  border-radius: 100%;
+  margin-top: 5rem;
+}
+
+#arrowIcon:hover {
+  background-color: rgb(111, 111, 111);
+}
+
+#arrowIcon:active {
+  background-color: rgb(140, 140, 140);
+}
