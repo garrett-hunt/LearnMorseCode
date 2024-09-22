@@ -5,30 +5,20 @@
   text-align: center;
 }
 
+textarea {
+  text-wrap: wrap;
+  font-size: 1.2rem;
+  height: 30rem;
+  width: 25rem;
+}
+
 .translator {
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
-.morse {
+.inputContainer {
   padding: 3rem;
-}
-
-.english {
-  padding: 3rem;
-}
-
-.morseInput {
-  font-size: 1.2rem;
-  height: 10rem;
-  width: 20rem;
-}
-
-.englishInput {
-  font-size: 1.2rem;
-  height: 10rem;
-  width: 20rem;
 }
 
 #arrowIcon {
