@@ -1,4 +1,5 @@
 import './styles.css';
+import { useState } from 'react';
 
 interface SwapButtonProps {
   translation: boolean;
@@ -9,11 +10,17 @@ const SwapButton: React.FC<SwapButtonProps> = ({
   translation,
   setTranslation,
 }) => {
+  const [rotation, setRotation] = useState(0);
   return (
     <button
       id="arrowIcon"
       onClick={() => {
         setTranslation(!translation);
+        setRotation(rotation + 180);
+      }}
+      style={{
+        transition: 'transform 0.5s ease',
+        transform: `rotate(${rotation}deg)`,
       }}
     >
       <svg
