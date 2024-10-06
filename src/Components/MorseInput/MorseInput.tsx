@@ -1,6 +1,19 @@
 import './styles.css';
+import React from 'react';
 
-const MorseInput = ({
+interface MorseInputProps {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setOutput: React.Dispatch<React.SetStateAction<string>>;
+  handleChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+    setInput: React.Dispatch<React.SetStateAction<string>>
+  ) => void;
+  isDisabled: boolean;
+  translate: (input: string) => string;
+}
+
+const MorseInput: React.FC<MorseInputProps> = ({
   input,
   setInput,
   setOutput,
@@ -13,7 +26,6 @@ const MorseInput = ({
       <h1>Morse Code</h1>
       <textarea
         disabled={isDisabled}
-        type="text"
         name="morseInput"
         value={input}
         placeholder={!isDisabled ? 'Input a value to be translated' : ''}

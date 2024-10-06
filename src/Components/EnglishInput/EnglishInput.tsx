@@ -1,6 +1,18 @@
 import './styles.css';
 
-const EnglishInput = ({
+interface EnglishInputProps {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setOutput: React.Dispatch<React.SetStateAction<string>>;
+  handleChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+    setInput: React.Dispatch<React.SetStateAction<string>>
+  ) => void;
+  isDisabled: boolean;
+  translate: (input: string) => string;
+}
+
+const EnglishInput: React.FC<EnglishInputProps> = ({
   input,
   setInput,
   setOutput,
@@ -13,7 +25,6 @@ const EnglishInput = ({
       <h1>English Input</h1>
       <textarea
         disabled={!isDisabled}
-        type="text"
         name="englishInput"
         value={input}
         placeholder={isDisabled ? 'Input a value to be translated' : ''}
