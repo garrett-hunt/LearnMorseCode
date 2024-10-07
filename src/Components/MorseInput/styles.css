@@ -1,9 +1,3 @@
-.morseContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 button {
   font-size: 1.5rem;
   height: 5rem;
@@ -19,4 +13,17 @@ button:hover {
 
 button:active {
   background-color: rgb(136, 136, 136);
+}
+
+.morseContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.morseLight {
+  text-align: center;
+  line-height: 30rem;
+  caret-color: transparent;
+  font-size: 2rem;
 }
