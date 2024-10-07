@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
   };
 
   const handleTextChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLTextAreaElement>,
     setInput: React.Dispatch<React.SetStateAction<string>>
   ) => {
     const newInput = event.target.value;
@@ -56,7 +56,7 @@ export const HomePage: React.FC = () => {
         setInput={setEnglishInput}
         setOutput={setMorseInput}
         handleChange={handleTextChange}
-        isDisabled={isEnglishToMorse}
+        isDisabled={!isEnglishToMorse}
         translate={englishToMorse}
       />
       <SwapButton

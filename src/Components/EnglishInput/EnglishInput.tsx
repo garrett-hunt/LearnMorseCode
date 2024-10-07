@@ -24,12 +24,12 @@ const EnglishInput: React.FC<EnglishInputProps> = ({
     <div className="inputContainer">
       <h1>English Input</h1>
       <textarea
-        disabled={!isDisabled}
+        disabled={isDisabled}
         name="englishInput"
         value={input}
-        placeholder={isDisabled ? 'Input a value to be translated' : ''}
+        placeholder={!isDisabled ? 'Input a value to be translated' : ''}
         onChange={(event) => {
-          if (isDisabled) {
+          if (!isDisabled) {
             const newInput = event.target.value;
             setInput(newInput);
             handleChange(event, setInput);
