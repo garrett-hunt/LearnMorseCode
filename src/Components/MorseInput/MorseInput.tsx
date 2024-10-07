@@ -91,7 +91,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
     <div className="morseContainer">
       <div className="inputContainer">
         <h1>Morse Code</h1>
-        {morseOutputType === 'TEXT' && (
+        {(morseOutputType === 'TEXT' || !isDisabled) && (
           <textarea
             disabled={isDisabled}
             name="morseInput"
@@ -106,7 +106,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
             }}
           ></textarea>
         )}
-        {morseOutputType === 'LIGHT' && (
+        {morseOutputType === 'LIGHT' && isDisabled && (
           <textarea
             className={'morseLight'}
             name="morseInput"
@@ -124,7 +124,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
             Play
           </textarea>
         )}
-        {morseOutputType === 'SOUND' && (
+        {morseOutputType === 'SOUND' && isDisabled && (
           <div>{/* Placeholder for sound output functionality */}</div>
         )}
       </div>
