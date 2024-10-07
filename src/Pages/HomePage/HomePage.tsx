@@ -67,7 +67,6 @@ export const HomePage: React.FC = () => {
         input={morseInput}
         setInput={setMorseInput}
         setOutput={setEnglishInput}
-        handleChange={handleTextChange}
         isDisabled={isEnglishToMorse}
         translate={morseToEnglish}
       />
