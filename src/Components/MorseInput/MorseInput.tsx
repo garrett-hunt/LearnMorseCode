@@ -1,7 +1,7 @@
 import './styles.css';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-type MorseType = 'TEXT' | 'LIGHT' | 'SOUND';
+type MorseType = 'TEXT' | 'LIGHT' | 'AUDIO';
 
 interface MorseInputProps {
   morseOutputType?: MorseType;
@@ -21,8 +21,8 @@ const MorseInput: React.FC<MorseInputProps> = ({
 }) => {
   const [morseOutputType, setMorseOutputType] = useState<MorseType>('TEXT');
   const [morseLight, setMorseLight] = useState<Boolean>(false);
-  const [lightValue, setLightValue] = useState('Click to Play');
-  const morseTypes: MorseType[] = ['TEXT', 'LIGHT', 'SOUND'];
+  const [activationText, setActivationText] = useState('Click to Play');
+  const morseTypes: MorseType[] = ['TEXT', 'LIGHT', 'AUDIO'];
 
   const playLightTranslation = async (output: string) => {
     const newCharPause = () => {
@@ -65,26 +65,22 @@ const MorseInput: React.FC<MorseInputProps> = ({
       });
     };
 
-    setLightValue('');
+    setActivationText('');
     const fixedOutput = output.replace('?', '');
     await pause();
-    console.log(fixedOutput);
 
     for (const char of fixedOutput) {
       if (char === '.') {
         await lightDot();
         await newCharPause();
-        console.log('dot');
       } else if (char === '-') {
         await lightDash();
         await newCharPause();
-        console.log('dash');
       } else {
         await pause();
-        console.log('space');
       }
     }
-    setLightValue('Click to Play');
+    setActivationText('Click to Play');
   };
 
   return (
@@ -94,7 +90,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
         {(morseOutputType === 'TEXT' || !isDisabled) && (
           <textarea
             disabled={isDisabled}
-            name="morseInput"
+            name="morseTextInput"
             value={input}
             placeholder={!isDisabled ? 'Input a value to be translated' : ''}
             onChange={(event) => {
@@ -109,9 +105,10 @@ const MorseInput: React.FC<MorseInputProps> = ({
         {morseOutputType === 'LIGHT' && isDisabled && (
           <textarea
             className={'morseLight'}
-            name="morseInput"
-            readOnly={true}
-            value={lightValue}
+            name="morseLightInput"
+            readOnly
+            unselectable="on"
+            value={activationText}
             style={{
               backgroundColor: morseLight
                 ? 'rgb(255, 255, 0)'
@@ -124,7 +121,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
             Play
           </textarea>
         )}
-        {morseOutputType === 'SOUND' && isDisabled && (
+        {morseOutputType === 'AUDIO' && isDisabled && (
           <div>{/* Placeholder for sound output functionality */}</div>
         )}
       </div>

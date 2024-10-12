@@ -21,7 +21,8 @@ button:active {
   align-items: center;
 }
 
-.morseLight {
+.morseLight,
+.morseAudio {
   text-align: center;
   line-height: 30rem;
   caret-color: transparent;
