@@ -53,16 +53,7 @@ const MorseOutputs: React.FC<MorseOutputProps> = ({
       </div>
       <div>
         {morseTypeButtons.map((type) => (
-          <button
-            key={type}
-            style={{
-              backgroundColor:
-                morseOutputType === type
-                  ? 'rgb(150, 150, 150)'
-                  : 'rgb(90, 90, 90)',
-            }}
-            onClick={() => setMorseOutputType(type)}
-          >
+          <button key={type} onClick={() => setMorseOutputType(type)}>
             {type.charAt(0) + type.slice(1).toLowerCase()}
           </button>
         ))}
