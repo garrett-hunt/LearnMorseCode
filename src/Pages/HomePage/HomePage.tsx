@@ -2,7 +2,7 @@ import React from 'react';
 import { MorseCode } from '../../../constants/MorseCode';
 import { useState } from 'react';
 import EnglishInput from '../../Components/EnglishInput/EnglishInput';
-import MorseInput from '../../Components/MorseInput/MorseInput';
+import MorseOutputs from '../../Components/MorseOutputs/MorseOutputs';
 import SwapButton from '../../Components/SwapButton/SwapButton';
 import './styles.css';
 
@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
         translation={isEnglishToMorse}
         setTranslation={setIsEnglishToMorse}
       />
-      <MorseInput
+      <MorseOutputs
         input={morseInput}
         setInput={setMorseInput}
         setOutput={setEnglishInput}

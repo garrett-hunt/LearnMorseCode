@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 type MorseType = 'TEXT' | 'LIGHT' | 'AUDIO';
 
-interface MorseInputProps {
+interface MorseOutputProps {
   morseOutputType?: MorseType;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
@@ -17,7 +17,7 @@ interface MorseInputProps {
 
 const morseTypes: MorseType[] = ['TEXT', 'LIGHT', 'AUDIO'];
 
-const MorseInput: React.FC<MorseInputProps> = ({
+const MorseOutputs: React.FC<MorseOutputProps> = ({
   input,
   setInput,
   setOutput,
@@ -68,4 +68,4 @@ const MorseInput: React.FC<MorseInputProps> = ({
   );
 };
 
-export default MorseInput;
+export default MorseOutputs;
