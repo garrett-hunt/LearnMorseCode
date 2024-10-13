@@ -29,4 +29,21 @@ button:focus {
   line-height: 30rem;
   caret-color: transparent;
   font-size: 2rem;
+  user-select: none;
+}
+
+.morseLight:hover,
+.morseAudio:hover {
+  background-color: rgb(92, 92, 92);
+}
+
+.morseLight:active,
+.morseAudio:active {
+  background-color: rgb(121, 121, 121);
+}
+
+/* Used to disable user from highlighting text */
+.morseLight::selection,
+.morseAudio::selection {
+  background-color: transparent;
 }

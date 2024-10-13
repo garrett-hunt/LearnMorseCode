@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { englishToMorse, morseToEnglish } from '../../../utils/utils';
 
 interface AudioOutputProps {
   output: string;

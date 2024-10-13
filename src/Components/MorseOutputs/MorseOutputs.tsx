@@ -1,10 +1,9 @@
-import { MorseCode } from '../../../constants/MorseCode';
+import React, { useEffect, useState } from 'react';
 import { englishToMorse, morseToEnglish } from '../../../utils/utils';
 import { AudioOutput } from '../AudioOutput/AudioOutput';
 import { LightOutput } from '../LightOutput/LightOutput';
 import { TextOutput } from '../TextOutput/TextOutput';
 import './styles.css';
-import React, { useEffect, useState } from 'react';
 
 type MorseType = 'TEXT' | 'LIGHT' | 'AUDIO';
 
@@ -43,7 +42,7 @@ const MorseOutputs: React.FC<MorseOutputProps> = ({
 
   return (
     <div className="morseContainer">
-      <div className="inputContainer">
+      <div className="inputOutputContainer">
         <h1>{outputLabel}</h1>
         {morseOutputType === 'TEXT' && (
           <TextOutput output={output}></TextOutput>

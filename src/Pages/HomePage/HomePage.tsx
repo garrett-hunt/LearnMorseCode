@@ -1,5 +1,4 @@
 import React from 'react';
-import { MorseCode } from '../../../constants/MorseCode';
 import { useState } from 'react';
 import EnglishInput from '../../Components/EnglishInput/EnglishInput';
 import MorseOutputs from '../../Components/MorseOutputs/MorseOutputs';

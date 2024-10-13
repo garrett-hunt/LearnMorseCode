@@ -15,7 +15,7 @@ const EnglishInput: React.FC<EnglishInputProps> = ({
   handleChange,
 }) => {
   return (
-    <div className="inputContainer">
+    <div className="inputOutputContainer">
       <h1>English Input</h1>
       <textarea
         name="englishInput"

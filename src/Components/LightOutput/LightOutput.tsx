@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { englishToMorse, morseToEnglish } from '../../../utils/utils';
 
 interface LightOutputProps {
   output: string;
@@ -73,11 +72,7 @@ export const LightOutput: React.FC<LightOutputProps> = ({ output }) => {
       className={'morseLight'}
       name="morseLightOutput"
       readOnly
-      unselectable="on"
       value={activationText}
-      style={{
-        backgroundColor: morseLight ? 'rgb(255, 255, 0)' : 'rgb(59, 59, 59)',
-      }}
       onClick={() => {
         if (activationText) {
           playLightTranslation(output);

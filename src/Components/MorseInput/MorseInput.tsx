@@ -13,7 +13,7 @@ export const MorseInput: React.FC<MorseInputProps> = ({
   handleChange,
 }) => {
   return (
-    <div className="inputContainer">
+    <div className="inputOutputContainer">
       <h1>Morse Input</h1>
       <textarea
         name="MorseInput"
