@@ -1,8 +1,17 @@
-# React + Vite
+# LearnMorseCode
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+- This project is a Morse Code Translator built using React and TypeScript. It allows users to input either English text or Morse code and translate between the two. The app also provides options to play Morse code translations using audio and light signals to simulate real Morse code communication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
+
+- You must have Node.js and npm installed on your device
+
+## Installation
+
+- In the base folder of the project, run `npm i`
+
+## Run the Application
+
+- To start the application, run `npm run dev`
