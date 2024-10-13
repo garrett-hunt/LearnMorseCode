@@ -2,20 +2,20 @@ import './styles.css';
 import { useState } from 'react';
 
 interface SwapButtonProps {
-  translation: boolean;
-  setTranslation: React.Dispatch<React.SetStateAction<boolean>>;
+  isEnglishToMorse: boolean;
+  setIsEnglishToMorse: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SwapButton: React.FC<SwapButtonProps> = ({
-  translation,
-  setTranslation,
+  isEnglishToMorse,
+  setIsEnglishToMorse,
 }) => {
   const [rotation, setRotation] = useState(0);
   return (
     <button
       id="arrowIcon"
       onClick={() => {
-        setTranslation(!translation);
+        setIsEnglishToMorse(!isEnglishToMorse);
         setRotation(rotation + 180);
       }}
       style={{

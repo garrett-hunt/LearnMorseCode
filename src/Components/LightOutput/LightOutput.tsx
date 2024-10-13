@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { englishToMorse, morseToEnglish } from '../../../utils/utils';
 
 interface LightOutputProps {
-  input: string;
+  output: string;
 }
 
-export const LightOutput: React.FC<LightOutputProps> = ({ input }) => {
+export const LightOutput: React.FC<LightOutputProps> = ({ output }) => {
   const [morseLight, setMorseLight] = useState<Boolean>(false);
   const [activationText, setActivationText] = useState('Click to Play');
 
@@ -70,7 +71,7 @@ export const LightOutput: React.FC<LightOutputProps> = ({ input }) => {
   return (
     <textarea
       className={'morseLight'}
-      name="morseLightInput"
+      name="morseLightOutput"
       readOnly
       unselectable="on"
       value={activationText}
@@ -78,7 +79,7 @@ export const LightOutput: React.FC<LightOutputProps> = ({ input }) => {
         backgroundColor: morseLight ? 'rgb(255, 255, 0)' : 'rgb(59, 59, 59)',
       }}
       onClick={() => {
-        playLightTranslation(input);
+        playLightTranslation(output);
       }}
     >
       Play

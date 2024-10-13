@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { englishToMorse, morseToEnglish } from '../../../utils/utils';
 
 interface AudioOutputProps {
-  input: string;
+  output: string;
 }
 
-export const AudioOutput: React.FC<AudioOutputProps> = ({ input }) => {
+export const AudioOutput: React.FC<AudioOutputProps> = ({ output }) => {
   const [activationText, setActivationText] = useState('Click to Play');
 
   const dotRef = useRef<HTMLAudioElement>(null);
@@ -70,17 +71,19 @@ export const AudioOutput: React.FC<AudioOutputProps> = ({ input }) => {
     }
     setActivationText('Click to Play');
   };
+
   return (
     <>
       <audio ref={dashRef} src="morse-dash-audio.m4a" preload="auto" />
       <audio ref={dotRef} src="morse-dot-audio.m4a" preload="auto" />
+
       <textarea
         className={'morseAudio'}
-        name="morseAudioInput"
+        name="morseAudioOutput"
         readOnly
         value={activationText}
         onClick={() => {
-          playAudioTranslation(input);
+          playAudioTranslation(output);
         }}
       >
         Play

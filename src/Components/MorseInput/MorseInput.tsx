@@ -1,6 +1,4 @@
-import './styles.css';
-
-interface EnglishInputProps {
+interface MorseInputProps {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   handleChange: (
@@ -9,16 +7,16 @@ interface EnglishInputProps {
   ) => void;
 }
 
-const EnglishInput: React.FC<EnglishInputProps> = ({
+export const MorseInput: React.FC<MorseInputProps> = ({
   input,
   setInput,
   handleChange,
 }) => {
   return (
     <div className="inputContainer">
-      <h1>English Input</h1>
+      <h1>Morse Input</h1>
       <textarea
-        name="englishInput"
+        name="MorseInput"
         value={input}
         placeholder={'Input a value to be translated'}
         onChange={(event) => {
@@ -31,4 +29,4 @@ const EnglishInput: React.FC<EnglishInputProps> = ({
   );
 };
 
-export default EnglishInput;
+export default MorseInput;
