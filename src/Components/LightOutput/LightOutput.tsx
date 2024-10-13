@@ -79,7 +79,9 @@ export const LightOutput: React.FC<LightOutputProps> = ({ output }) => {
         backgroundColor: morseLight ? 'rgb(255, 255, 0)' : 'rgb(59, 59, 59)',
       }}
       onClick={() => {
-        playLightTranslation(output);
+        if (activationText) {
+          playLightTranslation(output);
+        }
       }}
     >
       Play

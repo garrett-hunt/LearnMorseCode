@@ -83,7 +83,9 @@ export const AudioOutput: React.FC<AudioOutputProps> = ({ output }) => {
         readOnly
         value={activationText}
         onClick={() => {
-          playAudioTranslation(output);
+          if (activationText) {
+            playAudioTranslation(output);
+          }
         }}
       >
         Play
