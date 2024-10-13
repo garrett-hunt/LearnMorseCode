@@ -12,6 +12,8 @@ interface MorseInputProps {
   translate: (input: string) => string;
 }
 
+const morseTypes: MorseType[] = ['TEXT', 'LIGHT', 'AUDIO'];
+
 const MorseInput: React.FC<MorseInputProps> = ({
   input,
   setInput,
@@ -22,7 +24,9 @@ const MorseInput: React.FC<MorseInputProps> = ({
   const [morseOutputType, setMorseOutputType] = useState<MorseType>('TEXT');
   const [morseLight, setMorseLight] = useState<Boolean>(false);
   const [activationText, setActivationText] = useState('Click to Play');
-  const morseTypes: MorseType[] = ['TEXT', 'LIGHT', 'AUDIO'];
+
+  const dotRef = useRef<HTMLAudioElement>(null);
+  const dashRef = useRef<HTMLAudioElement>(null);
 
   const playLightTranslation = async (output: string) => {
     const newCharPause = () => {
@@ -34,7 +38,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
       });
     };
 
-    const lightDot = () => {
+    const playDotLight = () => {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           setMorseLight(false);
@@ -45,7 +49,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
       });
     };
 
-    const lightDash = () => {
+    const playDashLight = () => {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           setMorseLight(false);
@@ -56,7 +60,7 @@ const MorseInput: React.FC<MorseInputProps> = ({
       });
     };
 
-    const pause = () => {
+    const newWordPause = () => {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           setMorseLight(false);
@@ -67,17 +71,78 @@ const MorseInput: React.FC<MorseInputProps> = ({
 
     setActivationText('');
     const fixedOutput = output.replace('?', '');
-    await pause();
+    await newWordPause();
 
     for (const char of fixedOutput) {
       if (char === '.') {
-        await lightDot();
+        await playDotLight();
         await newCharPause();
       } else if (char === '-') {
-        await lightDash();
+        await playDashLight();
         await newCharPause();
       } else {
-        await pause();
+        await newWordPause();
+      }
+    }
+    setActivationText('Click to Play');
+  };
+
+  const playAudioTranslation = async (output: string) => {
+    const newCharPause = () => {
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 300);
+      });
+    };
+
+    const playDotAudio = () => {
+      return new Promise<void>((resolve) => {
+        if (dotRef.current) {
+          console.log('dot');
+          dotRef.current.play().then(() => {
+            setTimeout(() => {
+              resolve();
+            }, 400);
+          });
+        }
+      });
+    };
+
+    const playDashAudio = () => {
+      return new Promise<void>((resolve) => {
+        if (dashRef.current) {
+          dashRef.current.play().then(() => {
+            console.log('dash');
+            setTimeout(() => {
+              resolve();
+            }, 500);
+          });
+        }
+      });
+    };
+
+    const newWordPause = () => {
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 400);
+      });
+    };
+
+    setActivationText('');
+    const fixedOutput = output.replace('?', '');
+    await newWordPause();
+
+    for (const char of fixedOutput) {
+      if (char === '.') {
+        await playDotAudio();
+        await newCharPause();
+      } else if (char === '-') {
+        await playDashAudio();
+        await newCharPause();
+      } else {
+        await newWordPause();
       }
     }
     setActivationText('Click to Play');
@@ -121,8 +186,22 @@ const MorseInput: React.FC<MorseInputProps> = ({
             Play
           </textarea>
         )}
+
+        <audio ref={dashRef} src="morse-dash-audio.m4a" preload="auto" />
+        <audio ref={dotRef} src="morse-dot-audio.m4a" preload="auto" />
+
         {morseOutputType === 'AUDIO' && isDisabled && (
-          <div>{/* Placeholder for sound output functionality */}</div>
+          <textarea
+            className={'morseAudio'}
+            name="morseAudioInput"
+            readOnly
+            value={activationText}
+            onClick={() => {
+              playAudioTranslation(input);
+            }}
+          >
+            Play
+          </textarea>
         )}
       </div>
       <div>
