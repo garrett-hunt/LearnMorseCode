@@ -21,28 +21,34 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="translator">
-      {isEnglishToMorse ? (
-        <EnglishInput
-          input={englishInput}
-          setInput={setEnglishInput}
-          handleChange={handleTextChange}
+    <div>
+      <div className="title">
+        <h1>Morse Code Translator</h1>
+      </div>
+
+      <div className="translator">
+        {isEnglishToMorse ? (
+          <EnglishInput
+            input={englishInput}
+            setInput={setEnglishInput}
+            handleChange={handleTextChange}
+          />
+        ) : (
+          <MorseInput
+            input={morseInput}
+            setInput={setMorseInput}
+            handleChange={handleTextChange}
+          />
+        )}
+        <SwapButton
+          isEnglishToMorse={isEnglishToMorse}
+          setIsEnglishToMorse={setIsEnglishToMorse}
         />
-      ) : (
-        <MorseInput
-          input={morseInput}
-          setInput={setMorseInput}
-          handleChange={handleTextChange}
+        <MorseOutputs
+          input={isEnglishToMorse ? englishInput : morseInput}
+          isEnglishToMorse={isEnglishToMorse}
         />
-      )}
-      <SwapButton
-        isEnglishToMorse={isEnglishToMorse}
-        setIsEnglishToMorse={setIsEnglishToMorse}
-      />
-      <MorseOutputs
-        input={isEnglishToMorse ? englishInput : morseInput}
-        isEnglishToMorse={isEnglishToMorse}
-      />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import './styles.css';
-
 interface EnglishInputProps {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;

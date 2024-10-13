@@ -13,6 +13,11 @@ textarea {
   padding: 1rem;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+}
+
 .translator {
   display: flex;
   align-items: center;
