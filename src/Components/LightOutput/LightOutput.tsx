@@ -78,6 +78,7 @@ export const LightOutput: React.FC<LightOutputProps> = ({ output }) => {
           playLightTranslation(output);
         }
       }}
+      style={{ backgroundColor: morseLight ? 'yellow' : 'rgb(60, 60, 60)' }}
     >
       Play
     </textarea>
