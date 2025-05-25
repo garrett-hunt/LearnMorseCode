@@ -24,7 +24,7 @@ const MorseOutputs: React.FC<MorseOutputProps> = ({
   useEffect(() => {
     if (isEnglishToMorse) {
       setOutput(englishToMorse(input));
-    } else if (isEnglishToMorse && morseOutputType === 'TEXT') {
+    } else if (morseOutputType === 'TEXT') {
       setOutput(morseToEnglish(input));
     } else {
       setOutput(input);
@@ -32,7 +32,9 @@ const MorseOutputs: React.FC<MorseOutputProps> = ({
   });
 
   let outputLabel = '';
-  if (morseOutputType === 'TEXT') {
+  if (isEnglishToMorse && morseOutputType === 'TEXT') {
+    outputLabel = 'Morse Output';
+  } else if (morseOutputType === 'TEXT') {
     outputLabel = 'Text Output';
   } else if (morseOutputType === 'LIGHT') {
     outputLabel = 'Light Output';
